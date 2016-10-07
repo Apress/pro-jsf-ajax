@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" version="1.2"
+          xmlns:pro="http://projsf.apress.com/tags" 
+          xmlns:f="http://java.sun.com/jsf/core"
+          xmlns:h="http://java.sun.com/jsf/html" >
+  <jsp:directive.page contentType="application/x-javaserver-faces" />
+  <f:view>
+    <pro:document title="ProJSF : ProInputDate" >
+      <h:form id="form" >
+        Please enter a date with the pattern "d MMMMM yyyy".
+        <br/>
+        <pro:inputDate id="dateField" 
+                       title="Date Field Component" 
+                       value="#{inputDateBean.date}" >
+          <f:convertDateTime pattern="d MMMMM yyyy" />
+          <pro:validateDate availability="#{inputDateBean.getAvailability}" />
+        </pro:inputDate>
+        <br/>
+        <h:message for="theDate" />
+        <br/>
+        <h:commandButton value="Submit" />
+        <br/>
+        <h:outputText value="#{inputDateBean.date}" >
+          <f:convertDateTime pattern="d MMMMM yyyy" />
+        </h:outputText>
+      </h:form>
+    </pro:document>
+  </f:view>
+</jsp:root>

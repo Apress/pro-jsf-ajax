@@ -1,0 +1,18 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html xmlns:pro="http://projsf.apress.com/tags" >
+  <head>
+    <?import namespace="pro" 
+             implementation="/chapter9-context-root/projsf-ch9/inputDate.htc" ?>
+    <title>ProJSF : ProInputDate</title>
+  </head>
+  <body>
+    <form id="form" method="post">
+      Please enter a date with the pattern "d MMMMM yyyy".
+      <br></br>
+      <pro:inputDate id="form:dateField"
+                     pattern="d MMMMM yyyy"
+                     value="7 January 2006">
+      </pro:inputDate>
+    </form>
+  </body>
+</html>

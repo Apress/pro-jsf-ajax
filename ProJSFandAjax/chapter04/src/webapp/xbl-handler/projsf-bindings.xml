@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<xbl:bindings xmlns:xbl="http://www.mozilla.org/xbl"
+      xmlns:xul="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul" 
+      xmlns:html="http://www.w3.org/1999/xhtml" >
+  
+  <xbl:binding id="welcome" >
+    <xbl:content>
+      <xul:text value="Welcome, " />
+      <xul:text value="Guest" xbl:inherits="value=name" />
+      <xul:text value="!" />
+    </xbl:content>
+    <xbl:handlers>
+      <xbl:handler event="click" >
+        if (this.hasAttribute('name'))
+          alert('Nice to see you again, ' + this.getAttribute('name') + '.');
+      </xbl:handler>
+    </xbl:handlers>
+  </xbl:binding>
+</xbl:bindings>

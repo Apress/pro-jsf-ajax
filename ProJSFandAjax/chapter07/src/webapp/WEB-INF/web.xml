@@ -1,0 +1,41 @@
+<?xml version = '1.0' encoding = 'windows-1252'?>
+<!DOCTYPE web-app PUBLIC "-//Sun Microsystems, Inc.//DTD Web Application 2.3//EN" 
+                         "http://java.sun.com/dtd/web-app_2_3.dtd">
+<web-app>
+  <description>ProJSF: Chapter 7</description>
+
+  <servlet>
+    <servlet-name>Faces Servlet</servlet-name>
+    <servlet-class>javax.faces.webapp.FacesServlet</servlet-class>
+    <load-on-startup>1</load-on-startup>
+  </servlet>
+  <servlet>
+    <servlet-name>Mabon Servlet</servlet-name>
+    <servlet-class>net.java.dev.mabon.webapp.FacesLifecycleServlet</servlet-class>
+    <init-param>
+      <param-name>javax.faces.LIFECYCLE_ID</param-name>
+      <param-value>net.java.dev.mabon</param-value>
+    </init-param>
+  </servlet>
+
+  <servlet-mapping>
+    <servlet-name>Faces Servlet</servlet-name>
+    <url-pattern>/faces/*</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>Mabon Servlet</servlet-name>
+    <url-pattern>/mabon/*</url-pattern>
+  </servlet-mapping>
+
+  <session-config>
+    <session-timeout>35</session-timeout>
+  </session-config>
+  <mime-mapping>
+    <extension>html</extension>
+    <mime-type>text/html</mime-type>
+  </mime-mapping>
+  <mime-mapping>
+    <extension>txt</extension>
+    <mime-type>text/plain</mime-type>
+  </mime-mapping>
+</web-app>

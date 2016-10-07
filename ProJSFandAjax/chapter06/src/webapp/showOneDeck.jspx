@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" version="1.2" 
+          xmlns:pro="http://projsf.apress.com/tags" 
+          xmlns:f="http://java.sun.com/jsf/core"
+          xmlns:h="http://java.sun.com/jsf/html" >
+  <jsp:directive.page contentType="application/x-javaserver-faces" />
+  <f:view>
+    <html>
+      <head>
+        <title>ProJSF : ProShowOneDeck</title>
+        <style type="text/css" >
+          body
+          {
+            font-family: verdana,arial,helvetica,sans-serif;
+            font-size: medium;
+          }
+        </style>
+      </head>
+      <body>
+        <h:form id="form" >
+          <h:panelGrid width="300px" >
+            <pro:showOneDeck showItemId="first"
+                             showListener="#{backingBean.doShow}" >
+              <pro:showItem id="first" >
+                <f:facet name="header" >
+                  <h:panelGroup>
+                    <h:graphicImage url="/resources/java_small.jpg" alt="The Duke"
+                                    style="margin-right: 8px; vertical-align:bottom;" />
+                    <h:outputText value="Java" />
+                  </h:panelGroup>
+                </f:facet>
+                <h:panelGrid columns="1" >
+                  <h:outputLink value="http://apress.com/book/bookDisplay.html?bID=10044" >
+                    <h:outputText value="Pro JSF: Building Rich Internet Components" />
+                  </h:outputLink>
+                  <h:outputText value="Pro EJB 3" />
+                  <h:outputText value="Pro Apache Maven" />
+                </h:panelGrid>
+              </pro:showItem>
+              <pro:showItem id="second" >
+                <f:facet name="header" >
+                  <h:outputText value="Open Source" />
+                </f:facet>
+                <h:panelGrid columns="1" >
+                  <h:outputText value="Foundations of AJAX" />
+                  <h:outputText value="Pro Apache Ant" />
+                  <h:outputText value="Pro PHP Security" />
+                </h:panelGrid>
+              </pro:showItem>
+              <pro:showItem id="third" >
+                <f:facet name="header" >
+                  <h:outputText value=".NET" />
+                </f:facet>
+                <h:panelGrid columns="1" >
+                  <h:outputText value="Pro .NET Extreme Programming" />
+                  <h:outputText value=".NET for Delphi Programmers" />
+                </h:panelGrid>
+              </pro:showItem>
+              <pro:showListener type="com.apress.projsf.ch3.application.MyShowListener" />
+            </pro:showOneDeck>
+          </h:panelGrid>
+        </h:form>
+      </body>
+    </html>
+  </f:view>
+</jsp:root>

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<weblets-config xmlns="http://weblets.dev.java.net/config" >
+
+  <weblet>
+    <weblet-name>com.apress.projsf.ch6</weblet-name>
+    <weblet-class>net.java.dev.weblets.packaged.PackagedWeblet</weblet-class>
+    <init-param>
+      <param-name>package</param-name>
+      <param-value>com.apress.projsf.ch6.render.html.ajax.resources</param-value>
+    </init-param>
+  </weblet>
+
+  <weblet-mapping>
+    <weblet-name>com.apress.projsf.ch6</weblet-name>
+    <url-pattern>/projsf-ch6/*</url-pattern>
+  </weblet-mapping>
+
+</weblets-config>

@@ -1,0 +1,105 @@
+@namespace xul url(http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul);
+
+.showOneDeck
+{
+}
+
+.showItem
+{
+  border-style: ridge;
+}
+
+.showItemHeader 
+{
+  background-color: InactiveCaption;
+  color: InactiveCaptionText;
+  cursor: pointer;
+  vertical-align: top;
+  margin: 0px;
+  padding: 2px;
+  padding-left: 5px;
+}
+
+.showItemContent
+{
+  border-top-style: ridge;
+  margin: 0px;
+  padding: 2px;
+  padding-left: 5px;
+}
+
+.calendar
+{
+  cursor: default;
+  border-width: 1px;
+  border-color: rgb(32,32,32);
+  border-style: solid;
+  background-color: rgb(248,248,248);
+  font-family: sans-serif;
+  font-size: 14px;
+}
+
+.toolbar
+{
+  text-align: center;
+  padding: 1px;
+}
+
+.headings
+{
+  border-width: 1px;
+  border-style: solid;
+  border-color: rgb(32,32,32);
+  background-color: rgb(224,224,224);
+}
+
+.headings xul|label
+{
+  border-width: 1px;
+  border-top-width: 2px;
+  border-bottom-width: 2px;
+  border-color: rgb(176,176,176);
+  border-style: solid;
+  padding: 1px;
+  padding-right: 3px;
+  text-align: center;
+}
+
+.inputDate thead .last
+{
+  border-right-width: 0px;
+}
+
+.cells
+{
+  border-width: 1px;
+  border-color: rgb(224,224,224);
+  border-style: solid;
+  padding: 1px;
+  padding-right: 3px;
+  text-align: right;
+  width: 2em;
+  -moz-user-select: none;
+}
+
+.other
+{
+  color: rgb(128,128,128);
+}
+
+.noselect
+{
+  color: rgb(208,64,64);
+}
+
+.selected
+{
+  background-color: rgb(32,80,255);
+  color: white;
+  font-weight: bold;
+}
+
+.today
+{
+  font-weight: bold;
+}

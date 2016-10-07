@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+<?xml-stylesheet href="chrome://global/skin/" type="text/css" ?>
+<?xml-stylesheet href="projsf-bindings.css" type="text/css" ?>
+<xul:window align="start" 
+      xmlns:xul="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul"
+      xmlns:pro="http://projsf.apress.com/tags" >
+  <xul:groupbox>
+    <xul:caption label="Greeting" />
+    <pro:welcome id="duke" name="Duke" />
+    <pro:welcome id="guest" />
+  </xul:groupbox>
+</xul:window>

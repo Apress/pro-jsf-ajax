@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" version="2.0"
+          xmlns:f="http://java.sun.com/jsf/core"
+          xmlns:h="http://java.sun.com/jsf/html">
+  <jsp:output omit-xml-declaration="true" doctype-root-element="HTML"
+              doctype-system="http://www.w3.org/TR/html4/loose.dtd"
+              doctype-public="-//W3C//DTD HTML 4.01 Transitional//EN"/>
+  <jsp:directive.page contentType="text/html;charset=utf-8"/>
+  <f:view>
+    <html>
+      <body>
+        <h:form>
+          <h:messages />
+          <h:panelGrid>
+            <h:outputText value="Username" />
+            <h:inputText value="#{credentials.username}" />
+            <h:outputText value="Password" />
+            <h:inputText value="#{credentials.password}" />
+          </h:panelGrid>
+          <h:commandButton value="Login" 
+                           action="success"
+                           actionListener="#{credentials.onLogin}" />
+        </h:form>
+      </body>
+    </html>
+  </f:view>
+</jsp:root>

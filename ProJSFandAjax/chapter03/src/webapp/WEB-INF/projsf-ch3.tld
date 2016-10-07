@@ -1,0 +1,170 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE taglib 
+   PUBLIC "-//Sun Microsystems, Inc.//DTD JSP Tag Library 1.2//EN"
+          "http://java.sun.com/dtd/web-jsptaglibrary_1_2.dtd" >
+<taglib>
+
+  <tlib-version>1.0</tlib-version>
+  <jsp-version>1.2</jsp-version>
+  <short-name>pro</short-name>
+  <uri>http://projsf.apress.com/tags</uri>
+  <description>
+    This tag library contains JavaServer Faces component tags for the
+    ProJSF ShowOne Deck Renderer, and ShowOne Listener.
+  </description>
+
+  <tag>
+    <name>showOneDeck</name>
+    <tag-class>com.apress.projsf.ch3.taglib.pro.ProShowOneDeckTag</tag-class>
+    <body-content>JSP</body-content>
+    <description>
+      The ProShowOneDeck component tag handler.
+    </description>
+
+    <!-- UIComponent attributes -->
+    <attribute>
+      <name>id</name>
+      <required>false</required>
+      <rtexprvalue>false</rtexprvalue>
+      <description>
+        The component identifier for this component.  This value must be
+        unique within the closest parent component that is a naming
+        container.
+      </description>
+    </attribute>
+    <attribute>
+      <name>rendered</name>
+      <required>false</required>
+      <rtexprvalue>false</rtexprvalue>
+      <description>
+        Flag indicating whether or not this component should be rendered
+        (during Render Response Phase), or processed on any subsequent
+        form submit.
+      </description>
+    </attribute>
+    <attribute>
+      <name>binding</name>
+      <required>false</required>
+      <rtexprvalue>false</rtexprvalue>
+      <description>
+         The value binding expression linking this component to a 
+         property in a backing bean.
+      </description>
+    </attribute>
+
+    <!-- UIShowOne attributes -->
+    <attribute>
+      <name>showItemId</name>
+      <required>false</required>
+      <rtexprvalue>false</rtexprvalue>
+      <description>
+         The initial item to show.
+      </description>
+    </attribute>
+    <attribute>
+      <name>showListener</name>
+      <required>false</required>
+      <rtexprvalue>false</rtexprvalue>
+      <description>
+         The backing bean method binding for ShowEvents.
+      </description>
+    </attribute>
+    
+    <!-- ProShowOneDeck attributes -->
+    <attribute>
+      <name>styleClass</name>
+      <required>false</required>
+      <rtexprvalue>false</rtexprvalue>
+      <description>
+         The CSS style class for the ProShowOneDeck component.
+      </description>
+    </attribute>
+
+    <attribute>
+      <name>itemStyleClass</name>
+      <required>false</required>
+      <rtexprvalue>false</rtexprvalue>
+      <description>
+         The CSS style class for the UIShowItems.
+      </description>
+    </attribute>
+
+    <attribute>
+      <name>itemHeaderStyleClass</name>
+      <required>false</required>
+      <rtexprvalue>false</rtexprvalue>
+      <description>
+         The CSS style class for the header facet of the UIShowItems.
+      </description>
+    </attribute>
+
+    <attribute>
+      <name>itemContentStyleClass</name>
+      <required>false</required>
+      <rtexprvalue>false</rtexprvalue>
+      <description>
+         The CSS style class for the content of the UIShowItems.
+      </description>
+    </attribute>
+  </tag>
+
+  <tag>
+    <name>showItem</name>
+    <tag-class>com.apress.projsf.ch3.taglib.ShowItemTag</tag-class>
+    <body-content>JSP</body-content>
+    <description>
+      The UIShowItem component tag handler.
+    </description>
+
+    <!-- UIComponent attributes -->
+    <attribute>
+      <name>id</name>
+      <required>false</required>
+      <rtexprvalue>false</rtexprvalue>
+      <description>
+        The component identifier for this component.  This value must be
+        unique within the closest parent component that is a naming
+        container.
+      </description>
+    </attribute>
+    <attribute>
+      <name>rendered</name>
+      <required>false</required>
+      <rtexprvalue>false</rtexprvalue>
+      <description>
+        Flag indicating whether or not this component should be rendered
+        (during Render Response Phase), or processed on any subsequent
+        form submit.
+      </description>
+    </attribute>
+    <attribute>
+      <name>binding</name>
+      <required>false</required>
+      <rtexprvalue>false</rtexprvalue>
+      <description>
+         The value binding expression linking this component to a 
+         property in a backing bean.
+      </description>
+    </attribute>
+
+    <!-- UIShowItem attributes (none) -->
+  </tag>
+
+  <tag>
+    <name>showListener</name>
+    <tag-class>com.apress.projsf.ch3.taglib.ShowListenerTag</tag-class>
+    <body-content>JSP</body-content>
+    <description>
+      The ShowListener tag handler.
+    </description>
+
+    <attribute>
+      <name>type</name>
+      <required>false</required>
+      <rtexprvalue>false</rtexprvalue>
+      <description>
+         The fully qualified class name for the show listener.
+      </description>
+    </attribute>
+  </tag>
+</taglib>

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" ?> 
+<!DOCTYPE faces-config 
+   PUBLIC "-//Sun Microsystems, Inc.//DTD JavaServer Faces Config 1.1//EN" 
+          "http://java.sun.com/dtd/web-facesconfig_1_1.dtd">
+          
+<faces-config xmlns="http://java.sun.com/JSF/Configuration" >
+  <factory>
+    <faces-context-factory>com.apress.projsf.ch6.context.FacesContextFactoryImpl</faces-context-factory>
+    <render-kit-factory>com.apress.projsf.ch6.render.ExtendedRenderKitFactory</render-kit-factory>
+  </factory>
+
+  <render-kit>
+    <render-kit-id>com.apress.projsf.html.ajax[HTML_BASIC]</render-kit-id>
+    <render-kit-class>com.apress.projsf.ch6.render.html.ajax.HtmlAjaxRenderKit</render-kit-class>
+    <renderer>
+      <component-family>com.apress.projsf.ShowOne</component-family>
+      <renderer-type>com.apress.projsf.Deck</renderer-type>
+      <renderer-class>com.apress.projsf.ch6.render.html.ajax.HtmlAjaxShowOneDeckRenderer</renderer-class>
+    </renderer>
+  </render-kit>
+</faces-config>

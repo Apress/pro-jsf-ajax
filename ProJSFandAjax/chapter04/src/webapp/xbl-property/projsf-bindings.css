@@ -1,0 +1,6 @@
+@namespace pro url('http://projsf.apress.com/tags');
+
+pro|welcome 
+{ 
+  -moz-binding: url('projsf-bindings.xml#welcome'); 
+}

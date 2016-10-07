@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE faces-config PUBLIC
+  "-//Sun Microsystems, Inc.//DTD JavaServer Faces Config 1.1//EN"
+  "http://java.sun.com/dtd/web-facesconfig_1_1.dtd">
+<faces-config xmlns="http://java.sun.com/JSF/Configuration">
+
+  <application>
+    <default-render-kit-id>com.apress.projsf.htc.ajax</default-render-kit-id>
+  </application>
+
+  <managed-bean>
+    <managed-bean-name>inputDateBean</managed-bean-name>
+    <managed-bean-class>com.apress.projsf.ch7.application.InputDateBean</managed-bean-class>
+    <managed-bean-scope>session</managed-bean-scope>
+  </managed-bean>
+
+  <managed-bean>
+    <managed-bean-name>showOneDeckBean</managed-bean-name>
+    <managed-bean-class>com.apress.projsf.ch3.application.ShowOneDeckBean</managed-bean-class>
+    <managed-bean-scope>session</managed-bean-scope>
+  </managed-bean>
+
+</faces-config>

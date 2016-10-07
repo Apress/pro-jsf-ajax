@@ -1,0 +1,603 @@
+<?xml version="1.0"?>
+<bindings xmlns="http://www.mozilla.org/xbl"
+          xmlns:xbl="http://www.mozilla.org/xbl"
+          xmlns:html="http://www.w3.org/1999/xhtml"
+          xmlns:xul="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul" >
+
+  <binding id="showOneDeck" display="xul:vbox" >
+    <resources>
+      <stylesheet src="styles.css" />
+    </resources>
+    <content>
+      <xul:vbox class="showOneDeck"
+                xbl:inherits="className=styleClass" >
+        <children includes="showItem" />
+      </xul:vbox>
+    </content>
+  </binding>
+
+  <binding id="showItem" display="xul:vbox" >
+    <resources>
+      <stylesheet src="styles.css" />
+    </resources>
+    <content>
+      <xul:vbox class="showItem" flex="1" >
+        <xul:hbox id="showItemHeader" 
+                  onclick="this.parentNode.parentNode.expand()"
+                  class="showItemHeader"
+                  xbl:inherits="className=headerStyleClass" >
+          <children includes="showItemHeader" />
+        </xul:hbox>
+        <xul:hbox style="display:none;" >
+          <children/>
+        </xul:hbox>
+      </xul:vbox>
+    </content>
+    <implementation>
+      <method name="expand" >
+        <body>
+        <![CDATA[
+          var showOneNode = this.parentNode;
+          var showOneClientId = showOneNode.getAttribute('id');
+          var currentNode = this;
+          while (currentNode != null)
+          {
+            if (currentNode.localName == 'form' &&
+                currentNode.namespaceURI == 'http://www.w3.org/1999/xhtml')
+            {
+              var formNode = currentNode;
+              var content = new Object();
+              content[showOneClientId] = this.getAttribute('itemId');
+              d2.submit(formNode, content);
+              break;
+            }
+            currentNode = currentNode.parentNode;
+          }
+        ]]>
+        </body>
+      </method>
+    </implementation>
+  </binding>
+
+  <binding id="showItemActive" display="xul:vbox" >
+    <resources>
+      <stylesheet src="styles.css" />
+    </resources>
+    <content>
+      <xul:vbox class="showItem" flex="1" >
+        <xul:hbox id="showItemHeader" 
+                  class="showItemHeader" 
+                  xbl:inherits="className=headerStyleClass" >
+          <children includes="showItemHeader" />
+        </xul:hbox>
+        <xul:hbox class="showItemContent" 
+                  xbl:inherits="className=contentStyleClass" >
+          <children/>
+        </xul:hbox>
+      </xul:vbox>
+    </content>
+  </binding>
+
+  <binding id="showItemHeader" display="xul:hbox" >
+    <content>
+      <children/>
+    </content>
+  </binding>
+
+  <!-- inputDate binding -->
+  <binding id="inputDate">
+    <resources>
+      <stylesheet src="styles.css" />
+    </resources>
+    <content>
+      <xul:hbox>
+        <xul:textbox id="input" style="margin-left:0px;margin-right:0px;"
+                     xbl:inherits="value" 
+                     onchange="this.parentNode.parentNode.flushChanges();" />
+        <xul:button popup="calendar"
+                    image="/chapter8-context-root/projsf-ch8/inputDateButton.gif"
+                    style="margin-left:2px;margin-right:2px;min-width:18px;"/>
+      </xul:hbox>
+      <xul:popupset>
+        <xul:popup id="calendar" position="after_end"
+                   onpopupshowing="document.popupNode.parentNode.parentNode.popup()">
+          <xul:vbox class="calendar" >
+            <xul:hbox class="toolbar" >
+              <xul:text value="&lt;" 
+                        onclick="document.popupNode.parentNode.parentNode.scroll(-1)" />
+              <xul:label id="title" flex="1"
+                         style="text-align:center;padding: 1px;" />
+              <xul:text value="&gt;" 
+                        onclick="document.popupNode.parentNode.parentNode.scroll(1)" />
+            </xul:hbox>
+          
+            <xul:grid id="grid" 
+                      onclick="document.popupNode.parentNode.parentNode.clickCell(event)" >
+              <xul:columns>
+                <xul:column/>
+                <xul:column/>
+                <xul:column/>
+                <xul:column/>
+                <xul:column/>
+                <xul:column/>
+                <xul:column/>
+              </xul:columns>
+            
+              <xul:rows>
+                <xul:row class="headings" >
+                  <xul:label value="Sun" />
+                  <xul:label value="Mon" />
+                  <xul:label value="Tue" />
+                  <xul:label value="Wed" />
+                  <xul:label value="Thu" />
+                  <xul:label value="Fri" />
+                  <xul:label value="Sat" />
+                </xul:row>
+                <xul:row class="cells" >
+                  <xul:label/>
+                  <xul:label/>
+                  <xul:label/>
+                  <xul:label/>
+                  <xul:label/>
+                  <xul:label/>
+                  <xul:label/>
+                </xul:row>
+                <xul:row class="cells" >
+                  <xul:label/>
+                  <xul:label/>
+                  <xul:label/>
+                  <xul:label/>
+                  <xul:label/>
+                  <xul:label/>
+                  <xul:label/>
+                </xul:row>
+                <xul:row class="cells" >
+                  <xul:label/>
+                  <xul:label/>
+                  <xul:label/>
+                  <xul:label/>
+                  <xul:label/>
+                  <xul:label/>
+                  <xul:label/>
+                </xul:row>
+                <xul:row class="cells" >
+                  <xul:label/>
+                  <xul:label/>
+                  <xul:label/>
+                  <xul:label/>
+                  <xul:label/>
+                  <xul:label/>
+                  <xul:label/>
+                </xul:row>
+                <xul:row class="cells" >
+                  <xul:label/>
+                  <xul:label/>
+                  <xul:label/>
+                  <xul:label/>
+                  <xul:label/>
+                  <xul:label/>
+                  <xul:label/>
+                </xul:row>
+                <xul:row class="cells" >
+                  <xul:label/>
+                  <xul:label/>
+                  <xul:label/>
+                  <xul:label/>
+                  <xul:label/>
+                  <xul:label/>
+                  <xul:label/>
+                </xul:row>
+              </xul:rows>
+            </xul:grid>
+          </xul:vbox>
+        </xul:popup>
+      </xul:popupset>
+    </content>
+    <implementation>
+      <field name="currentMonth"/>
+      <field name="currentYear"/>
+      <field name="selectedMillis"/>
+      <field name="monthNames"/>
+
+      <constructor>
+      <![CDATA[
+        this.monthNames = ['January','February', 'March', 'April', 'May',
+                           'June', 'July', 'August', 'September',
+                           'October', 'November', 'December'];
+                           
+        var currentNode = this;
+        while (currentNode != null)
+        {
+          if (currentNode.localName == 'form' &&
+              currentNode.namespaceURI == 'http://www.w3.org/1999/xhtml')
+          {
+            var formNode = currentNode;
+            var clientId = this.getAttribute('id');
+            var inputNode = formNode.elements[clientId];
+            if (inputNode == null)
+            {
+              inputNode = document.createElementNS('http://www.w3.org/1999/xhtml', 'input');
+              inputNode.type = 'hidden';
+              inputNode.name = clientId;
+              formNode.appendChild(inputNode);
+            }
+            this.inputNode = inputNode;
+            break;
+          }
+          currentNode = currentNode.parentNode;
+        }
+      ]]>
+      </constructor>
+
+      <!--
+        - Update the form element for this component.
+        -->
+      <method name="flushChanges">
+        <body>
+        <![CDATA[
+          var input = document.getElementById('input');
+          this.inputNode.value = input.value;
+        ]]>
+        </body>
+      </method>
+      
+      <!--
+        - Lookup the index of a child DOM Node in the parent.
+        -
+        - @param childNode  the child DOM Node
+        -->
+      <method name="getChildIndex">
+        <parameter name="childNode"/>
+        <body>
+        <![CDATA[
+          var index = -1;
+          while (childNode)
+          {
+            index++;
+            childNode = childNode.previousSibling;
+          }
+          return index;
+        ]]>
+        </body>
+      </method>
+      
+      <!--
+        - Select the cell when it is clicked.
+        -
+        - @param event  the click event
+        -->
+      <method name="clickCell">
+        <parameter name="event"/>
+        <body>
+        <![CDATA[
+          var cellNode = event.target;
+          var rowNode = cellNode.parentNode;
+          
+          var row = this.getChildIndex(rowNode) - 1;
+          var col = this.getChildIndex(cellNode);
+          var day = Number(cellNode.value);
+        
+          // detect other month cells
+          if (row == -1)
+          {
+            // header cells
+            return;
+          }
+          else if (row == 0 && day > 7)
+          {
+            this.scroll(-1);
+          }
+          else if (row > 3 && day < 15)
+          {
+            this.scroll(1);
+          }
+          else
+          {
+            if (this.isAvailable(day))
+            {
+              // transfer value to input field
+              var input = document.getElementById('input');
+              var selectedDate = this.calculateDate(day);
+              input.value = this.format(selectedDate, 
+                                        this.getAttribute('pattern'));
+              
+              // flush the changes for next postback
+              this.flushChanges();
+              
+              // hide the popup
+              document.getElementById('calendar').hidePopup();
+            }
+          }
+        ]]>
+        </body>
+      </method>
+      <method name="isAvailable">
+        <parameter name="day"/>
+        <body>
+          <![CDATA[
+            var dayCell = this.findCell(day);
+          
+            // class="noselect today" is possible
+            if (dayCell.className.substring(0, 'noselect'.length) == 'noselect')
+              return false;
+          
+            return true;
+          ]]>
+        </body>
+      </method>
+      <!--
+        - Scrolls the visible month by +/- offset months.
+        -
+        - @param offset     the number of months to scroll
+        -->
+      <method name="scroll">
+        <parameter name="offset"/>
+        <body>
+          <![CDATA[
+          var gridNode = document.getElementById('grid');
+          var month = this.currentMonth + offset;
+          var year  = this.currentYear;
+          year += Math.floor(month / 12);
+          month = (month + 12) % 12;
+          this.currentMonth = month;
+          this.currentYear = year;
+        
+          var targetURL = this.getAttribute('targetURL');
+          
+          if (targetURL)
+          {
+            var startDate = new Date(year, month, 1);
+            var endDate = new Date(year, month, 31);
+        
+            var millisPerDay = 1000 * 60 * 60 * 24;
+            var startDay = Math.floor(startDate.getTime() / millisPerDay);
+            var endDay = Math.floor(endDate.getTime() / millisPerDay);
+        
+            // use Mabon to determine availability
+            var self = this;
+            net.java.dev.mabon.send(
+              { 
+                url: targetURL, 
+                args: [startDay, endDay], 
+                callback: function(result) { self.display(result); }
+              });
+          }
+          else
+          {
+            var available = [];
+            for (var i=0; i < 32; i++)
+            {
+              available.push(true);
+            }
+            this.display(available);
+          }
+        ]]>
+        </body>
+      </method>
+      <!--
+        - Calculates the Date for the specified day, within 
+        - the currently displayed month and year.
+        -
+        - @param day        the day to calculate
+        -->
+      <method name="calculateDate">
+        <parameter name="day"/>
+        <body>
+        <![CDATA[
+          return new Date(this.currentYear, this.currentMonth, day);
+        ]]>
+        </body>
+      </method>
+      <!--
+        - Deselect the selected day cell.
+        -->
+      <method name="deselect">
+        <body>
+          <![CDATA[
+          var selectedMillis = this.selectedMillis;
+          if (selectedMillis != null)
+          {
+            var selectedDate = new Date(selectedMillis);
+            var selectedDay = selectedDate.getDate();
+            var selectedCell = this.findCell(selectedDay);
+            var millisPerDay = 1000 * 60 * 60 * 24;
+            var isToday = Math.abs(new Date() - selectedDate - millisPerDay) < millisPerDay/2;
+            selectedCell.className = isToday ? 'today' : '';
+        
+            // clear out the selection
+            this.selectedMillis = null;
+          }
+        ]]>
+        </body>
+      </method>
+      <!--
+        - Visually update the selected day cell.
+        -
+        - @param day        the day to select
+        -->
+      <method name="select">
+        <parameter name="day"/>
+        <body>
+          <![CDATA[
+          // first, deselect the currently selected dayCell
+          this.deselect();
+              
+          // now, select the dayCell that was clicked
+          var selectedDate = this.calculateDate(day);
+          this.selectedMillis = selectedDate.getTime();
+            
+          var dayCell = this.findCell(day);
+          dayCell.className = 'selected';
+        ]]>
+        </body>
+      </method>
+      <!--
+        - Find the day cell for a given day in the calendar.
+        -
+        - @param day        the day to select
+        -->
+      <method name="findCell">
+        <parameter name="day"/>
+        <body>
+          <![CDATA[
+          var gridNode = document.getElementById('grid');
+          var dayStart = this.calculateDate(1).getDay();
+          var dayIndex = (day + dayStart - 1);
+          var rowIndex = Math.floor(dayIndex / 7) + 1;
+          var cellIndex = dayIndex % 7;
+          return gridNode.childNodes[1].childNodes[rowIndex].childNodes[cellIndex];
+        ]]>
+        </body>
+      </method>
+      <!--
+        - Displays the cells according to their availability.
+        -
+        - @param available  the boolean array indicating availability
+        -->
+      <method name="display">
+        <parameter name="available"/>
+        <body>
+          <![CDATA[
+          var gridNode = document.getElementById('grid');
+          var month = this.currentMonth;
+          var year  = this.currentYear;
+          var date = this.calculateDate(1);
+          
+          var titleNode = document.getElementById('title');
+          var title = this.format(date, 'MMM yyyy');
+          titleNode.value = title;
+          
+          var dayStart = date.getDay();
+        
+          var millisPerDay = 1000 * 60 * 60 * 24;
+          var dateStart = new Date(date.getTime() - dayStart * millisPerDay);
+          var dateEnd = new Date(date.getTime() + 32 * millisPerDay);
+          dateEnd.setDate(0);
+        
+          var selectedMillis = this.selectedMillis;
+          var selectedDate = new Date(selectedMillis);
+          var selectedDay = (month == selectedDate.getMonth() &&
+                             year == selectedDate.getFullYear()) ? selectedDate.getDate() 
+                                                                 : null
+        
+          var currentDate = new Date();
+          var currentDay = (month == currentDate.getMonth() &&
+                            year == currentDate.getFullYear()) ? currentDate.getDate() 
+                                                               : null
+          var rowsNode = gridNode.childNodes[1];
+          for (var rowIndex=0, dayIndex=0; rowIndex < 6; rowIndex++)
+          {
+            var rowNode = rowsNode.childNodes[rowIndex + 1];
+            for (var cellIndex=0; cellIndex < 7; cellIndex++, dayIndex++)
+            {
+              var cellNode = rowNode.childNodes[cellIndex];
+              var day = dayIndex - dayStart + 1;
+              if (day <= 0)
+              {
+                day = dateStart.getDate() + dayIndex;
+                cellNode.className = 'other'
+              }
+              else if (day > dateEnd.getDate())
+              {
+                day = day - dateEnd.getDate();
+                cellNode.className = 'other'
+              }
+              else
+              {
+                var canSelect = available[day - 1];
+                var classNames = [];
+        
+                if (canSelect)
+                {
+                  if (day == selectedDay)
+                    classNames.push('selected');
+                }
+                else
+                {
+                  classNames.push('noselect');
+                }
+        
+                if (day == currentDay)
+                  classNames.push('today');
+        
+                cellNode.className = classNames.join(' ');
+              }
+              
+              cellNode.value = String(day);
+            }
+          }
+        ]]>
+        </body>
+      </method>
+      <method name="popup">
+        <body>
+          <![CDATA[
+          // read the user-defined date string from the input field
+          var dateString = document.getElementById('input').value;
+          // parse that date string into a Date object
+          var parsedDate = this.parse(dateString, this.getAttribute('pattern'));
+          // if parse was successful use the Date, 
+          // otherwise use today's Date
+          var activeDate = (parsedDate != null) ? parsedDate : new Date();
+      
+          // ensure no selection initially
+          this.deselect();
+          
+          // specify month and year to be displayed
+          var month = activeDate.getMonth();
+          var year = activeDate.getFullYear();
+          this.currentMonth = month;
+          this.currentYear = year;
+          
+          // scroll zero months to ensure fully 
+          // populated calendar day cells
+          this.scroll(0);
+          
+          // select initial date (if possible)
+          if (parsedDate != null)
+            this.select(parsedDate.getDate());
+        }
+        ]]>
+        </body>
+      </method>
+      <method name="format">
+        <parameter name="date"/>
+        <parameter name="pattern"/>
+        <body>
+          <![CDATA[
+          if (pattern == "d MMMMM yyyy")
+            return date.getDate() + ' ' + this.monthNames[date.getMonth()] + ' ' + date.getFullYear();
+          
+          return this.monthNames[date.getMonth()] + ' ' + date.getFullYear();
+        ]]>
+        </body>
+      </method>
+      <method name="parse">
+        <parameter name="dateString"/>
+        <parameter name="pattern"/>
+        <body>
+          <![CDATA[
+          if (pattern == "d MMMMM yyyy")
+          {
+            var dmy = dateString.split(" ");
+            var day = Number(dmy[0]);
+            var month = -1;
+            var year = Number(dmy[2]);
+        
+            for (var i=0; i < this.monthNames.length; i++)
+            {
+              if (this.monthNames[i] == dmy[1])
+                month = i;
+            }
+        
+            if (month != -1 && !isNaN(year) && !isNaN(month) && !isNaN(day))
+              return new Date(year, month, day);
+          }
+        
+          return null;
+        ]]>
+        </body>
+      </method>
+    </implementation>
+  </binding>
+</bindings>

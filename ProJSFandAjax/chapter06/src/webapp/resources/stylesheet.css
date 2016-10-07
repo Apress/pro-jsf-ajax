@@ -1,0 +1,33 @@
+body
+{
+  font-family: verdana,arial,helvetica,sans-serif;
+  font-size: medium;
+}
+
+.showOne
+{
+}
+
+.showItem
+{
+  border-style: ridge;
+}
+
+.showItemHeader 
+{
+  background-color: InactiveCaption;
+  color: InactiveCaptionText;
+  cursor: pointer;
+  vertical-align: top;
+  margin: 0px;
+  padding: 2px;
+  padding-left: 5px;
+}
+
+.showItemContent
+{
+  border-top-style: ridge;
+  margin: 0px;
+  padding: 2px;
+  padding-left: 5px;
+}

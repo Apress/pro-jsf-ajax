@@ -1,0 +1,76 @@
+.inputDate
+{
+  cursor: default;
+  border-width: 1px;
+  border-color: rgb(32,32,32);
+  border-style: solid;
+  background-color: rgb(248,248,248);
+  font-family: sans-serif;
+  font-size: 14px;
+  position:absolute;
+}
+
+.inputDate .toolbar td
+{
+  text-align: center;
+  padding: 1px;
+}
+
+.inputDate thead .headings
+{
+  border-width: 1px;
+  border-style: solid;
+  border-color: rgb(32,32,32);
+  background-color: rgb(224,224,224);
+}
+
+.inputDate thead .headings td
+{
+  border-width: 1px;
+  border-top-width: 2px;
+  border-bottom-width: 2px;
+  border-color: rgb(176,176,176);
+  border-style: solid;
+  padding: 1px;
+  padding-right: 3px;
+  text-align: center;
+}
+
+.inputDate thead .last
+{
+  border-right-width: 0px;
+}
+
+.inputDate tbody td
+{
+  border-width: 1px;
+  border-color: rgb(224,224,224);
+  border-style: solid;
+  padding: 1px;
+  padding-right: 3px;
+  text-align: right;
+  width: 2em;
+  -moz-user-select: none;
+}
+
+.inputDate tbody .other
+{
+  color: rgb(128,128,128);
+}
+
+.inputDate tbody .noselect
+{
+  color: rgb(208,64,64);
+}
+
+.inputDate tbody .selected
+{
+  background-color: rgb(32,80,255);
+  color: white;
+  font-weight: bold;
+}
+
+.inputDate tbody .today
+{
+  font-weight: bold;
+}

@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8" ?> 
+<!DOCTYPE faces-config 
+   PUBLIC "-//Sun Microsystems, Inc.//DTD JavaServer Faces Config 1.1//EN" 
+          "http://java.sun.com/dtd/web-facesconfig_1_1.dtd">
+          
+<faces-config xmlns="http://java.sun.com/JSF/Configuration" >
+
+  <component>
+    <component-type>
+      com.apress.projsf.ProDocument
+    </component-type> 
+    <component-class>
+      com.apress.projsf.ch8.component.pro.ProDocument
+    </component-class> 
+
+    <!-- UIComponent attributes -->
+    <attribute>
+      <description>
+        The component identifier for this component.  This value must be
+        unique within the closest parent component that is a naming
+        container.
+      </description>
+      <attribute-name>id</attribute-name>
+      <attribute-class>java.lang.String</attribute-class>
+    </attribute>
+    <attribute>
+      <description>
+        Flag indicating whether or not this component should be rendered
+        (during Render Response Phase), or processed on any subsequent
+        form submit.
+      </description>
+      <attribute-name>rendered</attribute-name>
+      <attribute-class>boolean</attribute-class>
+      <default-value>true</default-value>
+    </attribute>
+    <attribute>
+      <description>
+         The value binding expression linking this component to a 
+         property in a backing bean.
+      </description>
+      <attribute-name>binding</attribute-name>
+      <attribute-class>javax.faces.el.ValueBinding</attribute-class>
+    </attribute>
+
+    <!-- ProDocument attributes -->
+    <attribute>
+      <attribute-name>title</attribute-name>
+      <attribute-class>java.lang.String</attribute-class>
+    </attribute>
+
+    <attribute>
+      <attribute-name>stylesheetURI</attribute-name>
+      <attribute-class>java.lang.String</attribute-class>
+    </attribute>
+
+  </component>
+  
+
+  <render-kit>
+    <render-kit-id>com.apress.projsf.xul.ajax[HTML_BASIC]</render-kit-id>
+    <render-kit-class>com.apress.projsf.ch8.render.xul.ajax.XulAjaxRenderKit</render-kit-class>
+    <renderer>
+      <component-family>com.apress.projsf.Document</component-family>
+      <renderer-type>com.apress.projsf.Document</renderer-type>
+      <renderer-class>com.apress.projsf.ch8.render.xul.basic.XulDocumentRenderer</renderer-class>
+    </renderer>
+    <renderer>
+      <component-family>javax.faces.Input</component-family>
+      <renderer-type>com.apress.projsf.Date</renderer-type>
+      <renderer-class>com.apress.projsf.ch8.render.xul.ajax.XulAjaxInputDateRenderer</renderer-class>
+    </renderer>
+    <renderer>
+      <component-family>com.apress.projsf.ShowOne</component-family>
+      <renderer-type>com.apress.projsf.Deck</renderer-type>
+      <renderer-class>com.apress.projsf.ch8.render.xul.ajax.XulAjaxShowOneDeckRenderer</renderer-class>
+    </renderer>
+  </render-kit>
+</faces-config>

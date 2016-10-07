@@ -1,0 +1,198 @@
+<?xml version="1.0" encoding="UTF-8" ?> 
+<!DOCTYPE faces-config 
+   PUBLIC "-//Sun Microsystems, Inc.//DTD JavaServer Faces Config 1.1//EN" 
+          "http://java.sun.com/dtd/web-facesconfig_1_1.dtd">
+          
+<faces-config xmlns="http://java.sun.com/JSF/Configuration" >
+
+  <component>
+    <component-type>
+      com.apress.projsf.ProShowOneDeck
+    </component-type> 
+    <component-class>
+      com.apress.projsf.ch3.component.pro.ProShowOneDeck
+    </component-class> 
+
+    <!-- UIComponent attributes -->
+    <attribute>
+      <description>
+        The component identifier for this component.  This value must be
+        unique within the closest parent component that is a naming
+        container.
+      </description>
+      <attribute-name>id</attribute-name>
+      <attribute-class>java.lang.String</attribute-class>
+    </attribute>
+    <attribute>
+      <description>
+        Flag indicating whether or not this component should be rendered
+        (during Render Response Phase), or processed on any subsequent
+        form submit.
+      </description>
+      <attribute-name>rendered</attribute-name>
+      <attribute-class>boolean</attribute-class>
+      <default-value>true</default-value>
+    </attribute>
+    <attribute>
+      <description>
+         The value binding expression linking this component to a 
+         property in a backing bean.
+      </description>
+      <attribute-name>binding</attribute-name>
+      <attribute-class>javax.faces.el.ValueBinding</attribute-class>
+    </attribute>
+    
+    <!-- UIShowOne attributes -->
+    <attribute>
+      <description>
+        The currently active showItem identifier.
+      </description>
+      <attribute-name>showItemId</attribute-name>
+      <attribute-class>java.lang.String</attribute-class>
+    </attribute>
+
+    <!-- ProShowOneDeck attributes -->
+    <attribute>
+      <description>
+        The styleClass for this ProShowOneDeck component.
+      </description>
+      <attribute-name>styleClass</attribute-name>
+      <attribute-class>java.lang.String</attribute-class>
+    </attribute>
+    
+    <attribute>
+      <description>
+        The itemStyleClass for the UIShowItems.
+      </description>
+      <attribute-name>itemStyleClass</attribute-name>
+      <attribute-class>java.lang.String</attribute-class>
+    </attribute>
+    <attribute>
+      <description>
+        The itemHeaderStyleClass for the UIShowItems.
+      </description>
+      <attribute-name>itemHeaderStyleClass</attribute-name>
+      <attribute-class>java.lang.String</attribute-class>
+    </attribute>
+    <attribute>
+      <description>
+        The itemContentStyleClass for the UIShowItems.
+      </description>
+      <attribute-name>itemContentStyleClass</attribute-name>
+      <attribute-class>java.lang.String</attribute-class>
+    </attribute>
+
+  </component>    
+
+  <component>
+    <component-type>
+      com.apress.projsf.ShowOne
+    </component-type> 
+    <component-class>
+      com.apress.projsf.ch3.component.UIShowOne
+    </component-class> 
+
+    <!-- UIComponent attributes -->
+    <attribute>
+      <description>
+        The component identifier for this component.  This value must be
+        unique within the closest parent component that is a naming
+        container.
+      </description>
+      <attribute-name>id</attribute-name>
+      <attribute-class>java.lang.String</attribute-class>
+    </attribute>
+    <attribute>
+      <description>
+        Flag indicating whether or not this component should be rendered
+        (during Render Response Phase), or processed on any subsequent
+        form submit.
+      </description>
+      <attribute-name>rendered</attribute-name>
+      <attribute-class>boolean</attribute-class>
+      <default-value>true</default-value>
+    </attribute>
+    <attribute>
+      <description>
+         The value binding expression linking this component to a 
+         property in a backing bean.
+      </description>
+      <attribute-name>binding</attribute-name>
+      <attribute-class>javax.faces.el.ValueBinding</attribute-class>
+    </attribute>
+    
+    <!-- UIShowOne attributes -->
+    <attribute>
+      <description>
+        The currently active showItem identifier.
+      </description>
+      <attribute-name>showItemId</attribute-name>
+      <attribute-class>java.lang.String</attribute-class>
+    </attribute>
+    
+  </component>    
+
+  <component>
+    <component-type>
+      com.apress.projsf.ShowItem
+    </component-type> 
+    <component-class>
+      com.apress.projsf.ch3.component.UIShowItem
+    </component-class> 
+
+    <!-- UIShowItem facets -->
+    <facet>
+      <description>The header of the showItem component.</description>
+      <display-name>header</display-name>
+      <facet-name>header</facet-name>
+      <facet-extension>
+        <facet-metadata>
+          <preferred-children>h:outputText h:graphicImage</preferred-children>
+        </facet-metadata>
+      </facet-extension>
+    </facet>
+
+    <!-- UIComponent attributes -->
+    <attribute>
+      <description>
+        The component identifier for this component.  This value must be
+        unique within the closest parent component that is a naming
+        container.
+      </description>
+      <attribute-name>id</attribute-name>
+      <attribute-class>java.lang.String</attribute-class>
+    </attribute>
+    <attribute>
+      <description>
+        Flag indicating whether or not this component should be rendered
+        (during Render Response Phase), or processed on any subsequent
+        form submit.
+      </description>
+      <attribute-name>rendered</attribute-name>
+      <attribute-class>boolean</attribute-class>
+      <default-value>true</default-value>
+    </attribute>
+    <attribute>
+      <description>
+         The value binding expression linking this component to a 
+         property in a backing bean.
+      </description>
+      <attribute-name>binding</attribute-name>
+      <attribute-class>javax.faces.el.ValueBinding</attribute-class>
+    </attribute>
+    
+    <!-- UIShowItem attributes (none) -->
+
+  </component>
+
+
+  <render-kit>
+    <!-- no renderkit-id, so these renderers are added to
+         the default renderkit -->
+    <renderer>
+      <component-family>com.apress.projsf.ShowOne</component-family>
+      <renderer-type>com.apress.projsf.Deck</renderer-type>
+      <renderer-class>com.apress.projsf.ch3.render.html.basic.HtmlShowOneDeckRenderer</renderer-class>
+    </renderer>
+  </render-kit>
+</faces-config>

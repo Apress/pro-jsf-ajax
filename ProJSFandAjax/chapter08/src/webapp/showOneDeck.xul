@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<?xml-stylesheet href="projsf-ch8/document.css" type="text/css"?>
+<?xml-stylesheet href="projsf-ch8/pro.css" type="text/css"?>
+<?xml-stylesheet href="resources/stylesheet.css" type="text/css"?>
+<xul:window xmlns="http://www.w3.org/1999/xhtml"
+            xmlns:xul="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul"
+            xmlns:pro="http://projsf.apress.com/tags" 
+            orient="horizontal" 
+            align="start" 
+            title="Pro JSF : ProShowOneDeck">
+  <xul:hbox align="center" flex="1">
+    <table width="300px">
+      <tbody>
+        <tr>
+          <td>
+            <xul:script type="application/x-javascript">
+              var djConfig={preventBackButtonFix: true,
+                            libraryScriptUri:'/chapter8-context-root/faces/weblets/dojo$0.1/dojo.js'};
+            </xul:script>
+            <xul:script type="application/x-javascript" 
+                        src="/chapter8-context-root/faces/weblets/dojo$0.1/dojo.js"/>
+            <xul:script type="application/x-javascript"
+                        src="/chapter8-context-root/faces/weblets/d2/d2.js"/>
+            <pro:showOneDeck showItemId="first">
+              <pro:showItem itemId="first" 
+                            active="true">
+                <pro:showItemHeader>
+                  <img src="resources/java_small.jpg" 
+                       alt="The Duke" 
+                       style="margin-right: 8px; vertical-align:bottom;"/>
+                    Java
+                </pro:showItemHeader>
+                <table>
+                  <tbody>
+                    <tr>
+                      <td>
+                        <a href="http://apress.com/book/bookDisplay.html?bID=10044">
+                          Pro JSF: Building Rich Internet Components
+                        </a>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>Pro EJB 3</td>
+                    </tr>
+                    <tr>
+                      <td>Pro Apache Maven</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </pro:showItem>
+              <pro:showItem itemId="second">
+                <pro:showItemHeader>Open Source</pro:showItemHeader>
+              </pro:showItem>
+              <pro:showItem itemId="third">
+                <pro:showItemHeader>.NET</pro:showItemHeader>
+              </pro:showItem>
+            </pro:showOneDeck>
+          </td>
+        </tr>
+      </tbody>
+    </table>                    
+  </xul:hbox>
+</xul:window>

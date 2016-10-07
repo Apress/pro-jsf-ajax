@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" ?> 
+<!DOCTYPE faces-config 
+   PUBLIC "-//Sun Microsystems, Inc.//DTD JavaServer Faces Config 1.1//EN" 
+          "http://java.sun.com/dtd/web-facesconfig_1_1.dtd">
+          
+<faces-config xmlns="http://java.sun.com/JSF/Configuration" >
+  <application>
+    <view-handler>com.apress.projsf.ch10.application.DynamicRenderKitViewHandler</view-handler>
+  </application>
+  
+  <managed-bean>
+    <managed-bean-name>projsf</managed-bean-name>
+    <managed-bean-class>com.apress.projsf.ch10.application.ApplicationBean</managed-bean-class>
+    <managed-bean-scope>application</managed-bean-scope>
+  </managed-bean>
+</faces-config>

@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" ?> 
+<!DOCTYPE faces-config 
+   PUBLIC "-//Sun Microsystems, Inc.//DTD JavaServer Faces Config 1.1//EN" 
+          "http://java.sun.com/dtd/web-facesconfig_1_1.dtd">
+          
+<faces-config xmlns="http://java.sun.com/JSF/Configuration" >
+  <render-kit>
+    <!-- no renderkit-id, so these renderers are added to
+         the default HtmlBasic renderkit -->
+    <renderer>
+      <component-family>javax.faces.Input</component-family>
+      <renderer-type>com.apress.projsf.Date</renderer-type>
+      <renderer-class>com.apress.projsf.ch5.render.html.basic.HtmlInputDateRenderer</renderer-class>
+  
+      <!-- Renderer-specific attributes -->  
+      <attribute>
+        <attribute-name>onchange</attribute-name>
+        <attribute-class>java.lang.String</attribute-class>
+      </attribute>
+    
+      <attribute>
+        <attribute-name>title</attribute-name>
+        <attribute-class>java.lang.String</attribute-class>
+      </attribute>
+    </renderer>
+
+    <renderer>
+      <component-family>com.apress.projsf.ShowOne</component-family>
+      <renderer-type>com.apress.projsf.Deck</renderer-type>
+      <renderer-class>com.apress.projsf.ch5.render.html.basic.HtmlShowOneDeckRenderer</renderer-class>
+    </renderer>
+  </render-kit>
+</faces-config>

@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="UTF-8" ?> 
+<!DOCTYPE faces-config 
+   PUBLIC "-//Sun Microsystems, Inc.//DTD JavaServer Faces Config 1.1//EN" 
+          "http://java.sun.com/dtd/web-facesconfig_1_1.dtd">
+          
+<faces-config xmlns="http://java.sun.com/JSF/Configuration" >
+
+  <component>
+    <component-type>
+      com.apress.projsf.ProInputDate
+    </component-type> 
+    <component-class>
+      com.apress.projsf.ch2.component.pro.ProInputDate
+    </component-class> 
+    
+    <!-- UIComponent attributes -->
+    <attribute>
+      <description>
+        The component identifier for this component.  This value must be
+        unique within the closest parent component that is a naming
+        container.
+      </description>
+      <attribute-name>id</attribute-name>
+      <attribute-class>java.lang.String</attribute-class>
+    </attribute>
+    <attribute>
+      <description>
+        Flag indicating whether or not this component should be rendered
+        (during Render Response Phase), or processed on any subsequent
+        form submit.
+      </description>
+      <attribute-name>rendered</attribute-name>
+      <attribute-class>boolean</attribute-class>
+      <default-value>true</default-value>
+    </attribute>
+    <attribute>
+      <description>
+         The value binding expression linking this component to a 
+         property in a backing bean.
+      </description>
+      <attribute-name>binding</attribute-name>
+      <attribute-class>javax.faces.el.ValueBinding</attribute-class>
+    </attribute>
+
+    <!-- UIInput attributes -->
+    <attribute>
+      <description>
+        Converter instance registered with this component.
+      </description>
+      <attribute-name>converter</attribute-name>
+      <attribute-class>javax.faces.convert.Converter</attribute-class>
+    </attribute>
+    <attribute>
+      <description>
+        Flag indicating that this component's value must be
+        converted and validated immediately (that is, during
+        Apply Request Values phase), rather than waiting
+        until Process Validations phase.
+      </description>
+      <attribute-name>immediate</attribute-name>
+      <attribute-class>boolean</attribute-class>
+    </attribute>
+    <attribute>
+      <description>
+        Flag indicating that the user is required to provide a submitted
+        value for this input component.
+      </description>
+      <attribute-name>required</attribute-name>
+      <attribute-class>boolean</attribute-class>
+    </attribute>
+    <attribute>
+      <description>
+        MethodBinding representing a validator method that will be called
+        during Process Validations to perform correctness checks on the
+        value of this component.  The expression must evaluate to a public
+        method that takes FacesContext, UIComponent, and Object parameters,
+        with a return type of void.
+      </description>
+      <attribute-name>validator</attribute-name>
+      <attribute-class>javax.faces.validator.Validator</attribute-class>
+    </attribute>
+    <attribute>
+      <description>
+        The current value of this component.
+      </description>
+      <attribute-name>value</attribute-name>
+      <attribute-class>java.lang.Object</attribute-class>
+    </attribute>
+    <attribute>
+      <description>
+        MethodBinding representing a value change listener method that will be
+        notified when a new value has been set for this input component.  The
+        expression must evaluate to a public method that takes a
+        ValueChangeEvent parameter, with a return type of void.
+      </description>
+      <attribute-name>valueChangeListener</attribute-name>
+      <attribute-class>javax.faces.event.ValueChangeListener</attribute-class>
+    </attribute>
+
+    <!-- ProInputDate attributes -->
+    <attribute>
+      <description>
+        The onchange JavaScript code that will be executed when the
+        formatted value changes in the rendered markup.
+      </description>
+      <attribute-name>onchange</attribute-name>
+      <attribute-class>java.lang.String</attribute-class>
+    </attribute>
+    <attribute>
+      <description>
+        The title, or tooltip, to use for the rendered markup of 
+        this component.
+      </description>
+      <attribute-name>title</attribute-name>
+      <attribute-class>java.lang.String</attribute-class>
+    </attribute>
+  </component>
+
+
+  <render-kit>
+    <!-- no renderkit-id, so these renderers are added to
+         the default HtmlBasic renderkit -->
+    <renderer>
+      <component-family>javax.faces.Input</component-family>
+      <renderer-type>com.apress.projsf.Date</renderer-type>
+      <renderer-class>com.apress.projsf.ch2.render.html.basic.HtmlInputDateRenderer</renderer-class>
+  
+      <!-- Renderer-specific attributes -->  
+      <attribute>
+        <attribute-name>onchange</attribute-name>
+        <attribute-class>java.lang.String</attribute-class>
+      </attribute>
+    
+      <attribute>
+        <attribute-name>title</attribute-name>
+        <attribute-class>java.lang.String</attribute-class>
+      </attribute>
+    </renderer>
+  </render-kit>
+</faces-config>

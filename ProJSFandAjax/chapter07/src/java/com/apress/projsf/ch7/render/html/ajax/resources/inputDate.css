@@ -1,0 +1,88 @@
+.ProInputDateButton
+{
+  padding-left: 1px;
+  padding-right: 1px;
+  vertical-align: bottom;
+}
+
+.ProInputDateCalendar
+{
+  cursor: default;
+  border-width: 1px;
+  border-color: rgb(32,32,32);
+  border-style: solid;
+  background-color: rgb(248,248,248);
+  font-family: sans-serif;
+  font-size: 14px;
+  position:absolute;
+}
+
+.ProInputDateCalendar .toolbar td
+{
+  text-align: center;
+  padding: 1px;
+}
+
+.ProInputDateCalendar .control
+{
+  -moz-user-select: none;
+}
+
+.ProInputDateCalendar thead .headings
+{
+  border-width: 1px;
+  border-style: solid;
+  border-color: rgb(32,32,32);
+  background-color: rgb(224,224,224);
+}
+
+.ProInputDateCalendar thead .headings td
+{
+  border-width: 1px;
+  border-top-width: 2px;
+  border-bottom-width: 2px;
+  border-color: rgb(176,176,176);
+  border-style: solid;
+  padding: 1px;
+  padding-right: 3px;
+  text-align: center;
+}
+
+.ProInputDateCalendar thead .last
+{
+  border-right-width: 0px;
+}
+
+.ProInputDateCalendar tbody td
+{
+  border-width: 1px;
+  border-color: rgb(224,224,224);
+  border-style: solid;
+  padding: 1px;
+  padding-right: 3px;
+  text-align: right;
+  width: 2em;
+  -moz-user-select: none;
+}
+
+.ProInputDateCalendar tbody .other
+{
+  color: rgb(128,128,128);
+}
+
+.ProInputDateCalendar tbody .noselect
+{
+  color: rgb(208,64,64);
+}
+
+.ProInputDateCalendar tbody .selected
+{
+  background-color: rgb(32,80,255);
+  color: white;
+  font-weight: bold;
+}
+
+.ProInputDateCalendar tbody .today
+{
+  font-weight: bold;
+}

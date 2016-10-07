@@ -1,0 +1,428 @@
+<html>
+  <head>
+    <public:component tagName="inputDate" >
+      <public:defaults viewlinkcontent="true" />
+      
+      <public:property name="value" />
+      <public:property name="pattern" />
+      <public:property name="targetURL" />
+      
+      <public:attach event="ondocumentready" handler="_constuctor" />
+    </public:component>
+
+    <script>
+      /**
+       * The day names for a week.
+       */
+      var _DAY_NAMES = ['Sun', 'Mon', 'Tue', 
+                        'Wed', 'Thu', 'Fri', 'Sat'];
+      /**
+       * The month names for a year.
+       */
+      var _MONTH_NAMES = ['January', 'February', 'March',  
+                          'April', 'May', 'June', 
+                          'July', 'August', 'September', 
+                          'October', 'November', 'December'];
+    
+      var internalState = [];
+      var popup = window.createPopup();
+    
+      function _constuctor()
+      {
+        popup.document.open();
+        popup.document.writeln('<html>');
+        // eliminate scrollbars
+        popup.document.writeln('<body style="margin:0px;padding:0px;overflow:auto;" >');
+        popup.document.writeln(inputDatePopup.innerHTML);
+        popup.document.writeln('</body>');
+        popup.document.writeln('</html>');
+        popup.document.close();
+    
+        var prevNode = popup.document.getElementById('prevNode');
+        var nextNode = popup.document.getElementById('nextNode');
+        var tableNode = popup.document.getElementById('tableNode');
+        var titleNode = popup.document.getElementById('titleNode');
+    
+        prevNode.onclick = _scrollPrev;
+        nextNode.onclick = _scrollNext;
+        tableNode.tBodies[0].onclick = _clickCell;
+    
+        internalState.tableNode = tableNode;
+        internalState.titleNode = titleNode;
+    
+        if (element.value)
+          input.value = element.value;
+    
+        if (element.id)
+        {
+          input.name = element.id;
+    
+          var currentNode = this;
+          while (currentNode != null)
+          {
+            if (currentNode.tagName.toLowerCase() == 'form' &&
+                currentNode.scopeName == 'HTML')
+            {
+              var formNode = currentNode;
+              var clientId = element.id;
+              var inputNode = formNode.elements[clientId];
+              if (inputNode == null)
+              {
+                inputNode = document.createElement('input');
+                inputNode.type = 'hidden';
+                inputNode.name = clientId;
+                formNode.appendChild(inputNode);
+              }
+              internalState.inputNode = inputNode;
+              break;
+            }
+            currentNode = currentNode.parentNode;
+          }
+        }
+        
+        _flushChanges();
+      }
+      
+      function _scrollPrev()
+      {
+        _scroll(-1);
+      }
+      
+      function _scrollNext()
+      {
+        _scroll(1);
+      }
+      
+      function _flushChanges()
+      {
+        if (internalState.inputNode)
+          internalState.inputNode.value = input.value;
+      }
+    
+      function _popup()
+      {
+        // read the user-defined date string from the input field
+        var dateString = input.value;
+        // parse that date string into a Date object
+        var parsedDate = _parseDate(dateString, element.pattern);
+    
+        // if parse was successful use the Date, 
+        // otherwise use today's Date
+        var activeDate = (parsedDate != null) ? parsedDate : new Date();
+    
+        // ensure no selection initially
+        _deselect();
+        
+        // specify month and year to be displayed
+        var month = activeDate.getMonth();
+        var year = activeDate.getFullYear();
+        internalState._currentMonth = month;
+        internalState._currentYear = year;
+        
+        // scroll zero months to ensure fully 
+        // populated calendar day cells
+        _scroll(0);
+        
+        // select initial date (if possible)
+        if (parsedDate != null)
+          _select(parsedDate.getDate());
+      }
+    
+      function _clickCell()
+      {
+        var event = popup.document.parentWindow.event;
+        var cellNode = event.srcElement;
+        var rowNode = cellNode.parentNode;
+        
+        var row = rowNode.sectionRowIndex;
+        var col = cellNode.cellIndex;
+        var day = Number(cellNode.innerText);
+        
+        // detect other month cells
+        if (row == -1)
+        {
+          // header cells
+          return;
+        }
+        else if (row == 0 && day > 7)
+        {
+          _scrollPrev();
+        }
+        else if (row > 3 && day < 15)
+        {
+          _scrollNext();
+        }
+        else
+        {
+          if (_isAvailable(day))
+          {
+            // transfer value to input field
+            var selectedDate = _calculateDate(day);
+            input.value = _formatDate(selectedDate, element.pattern);
+            
+            // flush the changes for next postback
+            _flushChanges();
+            
+            // hide the popup
+            popup.hide();
+          }
+        }
+      }
+    
+      function _isAvailable(day)
+      {
+        var dayCell = _findCell(day);
+      
+        // class="noselect today" is possible
+        if (dayCell.className.substring(0, 'noselect'.length) == 'noselect')
+          return false;
+      
+        return true;
+      }
+      
+      function _select(day)
+      {
+        // first, deselect the currently selected dayCell
+        _deselect();
+            
+        // now, select the dayCell that was clicked
+        internalState._selectedDate = _calculateDate(day);
+          
+        var dayCell = _findCell(day);
+        dayCell.className = 'selected';
+      }
+      
+      function _deselect()
+      {
+        var selectedDate = internalState._selectedDate;
+        if (selectedDate != null)
+        {
+          var selectedDay = selectedDate.getDate();
+          var selectedCell = _findCell(selectedDay);
+          var millisPerDay = 1000 * 60 * 60 * 24;
+          var isToday = Math.abs(new Date() - selectedDate - millisPerDay) < millisPerDay/2;
+          selectedCell.className = isToday ? 'today' : '';
+      
+          // clear out the selection
+          internalState._selectedDate = null;
+        }
+      }
+      
+      function _findCell(day)
+      {
+        var dayStart = _calculateDate(1).getDay();
+        var dayIndex = (day + dayStart - 1);
+        var rowIndex = Math.floor(dayIndex / 7);
+        var cellIndex = dayIndex % 7;
+        return internalState.tableNode.tBodies[0].rows[rowIndex].cells[cellIndex];
+      }
+    
+      function _scroll(offset)
+      {
+        // scroll months, updating year as necessary
+        internalState._currentMonth = internalState._currentMonth + offset;
+        internalState._currentYear += Math.floor(internalState._currentMonth / 12);
+        internalState._currentMonth = (internalState._currentMonth + 12) % 12;
+        
+        // use Mabon to retrieve availability
+        if (element.targetURL)
+        {
+          var startDate = _calculateDate(1);
+          var endDate = _calculateDate(31);
+      
+          var millisPerDay = 1000 * 60 * 60 * 24;
+          var startDay = Math.floor(startDate.getTime() / millisPerDay);
+          var endDay = Math.floor(endDate.getTime() / millisPerDay);
+      
+          // use Mabon to determine availability
+          mabon.send(
+            { 
+              url: element.targetURL, 
+              args: [startDay, endDay], 
+              callback: function(result) { _display(result); }
+            });
+        }
+        else
+        {
+          var available = [];
+          for (var i=0; i < 32; i++)
+          {
+            available.push(true);
+          }
+          _display(available);
+        }
+      }
+    
+      function _display(available)
+      {
+        var date = _calculateDate(1);
+        var month = date.getMonth();
+        var year  = date.getFullYear();
+        var dayStart = date.getDay();
+      
+        // update title    
+        internalState.titleNode.innerText = _formatDate(date, 'MMM yyyy');
+        
+        var millisPerDay = 1000 * 60 * 60 * 24;
+        var dateStart = new Date(date.getTime() - dayStart * millisPerDay);
+        var dateEnd = new Date(date.getTime() + 32 * millisPerDay);
+        dateEnd.setDate(0);
+      
+        var selectedDate = internalState._selectedDate;
+        var selectedDay = _isVisible(selectedDate) ? selectedDate.getDate() 
+                                                   : null;
+      
+        var currentDate = new Date();
+        var currentDay = _isVisible(currentDate) ? currentDate.getDate() 
+                                                 : null;
+      
+        var tBody = internalState.tableNode.tBodies[0];
+        for (var rowIndex=0, dayIndex=0; rowIndex < 6; rowIndex++)
+        {
+          var rowNode = tBody.rows[rowIndex];
+          for (var cellIndex=0; cellIndex < 7; cellIndex++, dayIndex++)
+          {
+            var cellNode = rowNode.cells[cellIndex];
+            var day = dayIndex - dayStart + 1;
+            if (day <= 0)
+            {
+              day = dateStart.getDate() + dayIndex;
+              cellNode.className = 'other'
+            }
+            else if (day > dateEnd.getDate())
+            {
+              day = day - dateEnd.getDate();
+              cellNode.className = 'other'
+            }
+            else
+            {
+              var canSelect = available[day - 1];
+              var classNames = [];
+      
+              if (canSelect)
+              {
+                if (day == selectedDay)
+                  classNames.push('selected');
+              }
+              else
+              {
+                classNames.push('noselect');
+              }
+      
+              if (day == currentDay)
+                classNames.push('today');
+      
+              cellNode.className = classNames.join(' ');
+            }
+            
+            cellNode.innerText = String(day);
+          }
+        }
+      
+        if (!popup.isOpen)
+        {
+          // determine the popup size offscreen
+          popup.show(0, -1000, 500, 500);
+          var bounds = internalState.tableNode.getBoundingClientRect();
+          // display the popup;
+          popup.show(0, input.offsetHeight,
+                     bounds.right + 2, bounds.bottom + 2,
+                     input);
+        }
+      }
+    
+      function _isVisible(date)
+      {
+        return (date != null &&
+                date.getMonth() == internalState._currentMonth &&
+                date.getFullYear() == internalState._currentYear); 
+      }
+      
+      function _calculateDate(day)
+      {
+        return new Date(internalState._currentYear, internalState._currentMonth, day);
+      }
+    
+      
+      function _parseDate(
+        dateString,
+        pattern)
+      {
+        if (pattern == "d MMMMM yyyy")
+        {
+          var dmy = dateString.split(" ");
+          var day = Number(dmy[0]);
+          var month = -1;
+          var year = Number(dmy[2]);
+      
+          for (var i=0; i < _MONTH_NAMES.length; i++)
+          {
+            if (_MONTH_NAMES[i] == dmy[1])
+              month = i;
+          }
+      
+          if (month != -1 && !isNaN(year) && !isNaN(month) && !isNaN(day))
+            return new Date(year, month, day);
+        }
+      
+        return null;
+      }
+      
+      function _formatDate(
+        date,
+        pattern)
+      {
+        if (pattern == "d MMMMM yyyy")
+          return date.getDate() + ' ' + _MONTH_NAMES[date.getMonth()] + ' ' + date.getFullYear();
+        
+        return _MONTH_NAMES[date.getMonth()] + ' ' + date.getFullYear();
+      }
+    </script>
+  </head>
+  
+  <body>
+    <input id="input" type="text" style="margin:0px" 
+           onchange="_flushChanges()" >
+    <button type="button" style="margin:0px;width:2em;"
+            onclick="_popup()" >
+      <img src="/chapter9-context-root/projsf-ch9/inputDateButton.gif" >
+    </button>
+            
+    <!-- XML Data Island for popup contents -->
+    <xml id="inputDatePopup" >
+      <style type="text/css" >
+        @import url("/chapter9-context-root/projsf-ch9/inputDate.css");
+      </style>
+      <table id="tableNode"
+             class="inputDate" 
+             cellspacing="0px"
+             cellpadding="0px" >
+       <thead>
+         <tr class="toolbar">
+           <td id="prevNode" >&lt;</td>
+           <td id="titleNode" colspan="5" ></td>
+           <td id="nextNode" >&gt;</td>
+         </tr>
+         <tr class="headings" >
+           <td>Sun</td>
+           <td>Mon</td>
+           <td>Tue</td>
+           <td>Wed</td>
+           <td>Thu</td>
+           <td>Fri</td>
+           <td>Sat</td>
+         </tr>
+       </thead>
+       <tbody>
+        <tr><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+        <tr><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+        <tr><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+        <tr><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+        <tr><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+        <tr><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+       </tbody>
+      </table>
+    </xml>
+  </body>
+
+</html>

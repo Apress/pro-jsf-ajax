@@ -1,0 +1,59 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html xmlns:pro="http://projsf.apress.com/tags" >
+  <head>
+    <?import namespace="pro" 
+             implementation="/chapter9-context-root/projsf-ch9/showItem.htc" ?>
+    <?import namespace="pro" 
+             implementation="/chapter9-context-root/projsf-ch9/inputDate.htc" ?>
+    <title>ProJSF : ProShowOneDeck</title>
+    <link rel="stylesheet" href="resources/stylesheet.css"/>
+  </head>
+  <body class="MyDocument">
+    <form id="form" method="post" >
+      <table width="300px">
+        <tbody>
+          <tr>
+            <td>
+              <pro:inputDate id="form:dateField"
+                             pattern="d MMMMM yyyy"
+                             value="7 January 2006">
+              </pro:inputDate>
+              <pro:showOneDeck id="form:showOneDeck" style="display:block;" >
+                <pro:showItem itemid="first" active="true" style="display:block;">
+                  <pro:headerFacet>
+                    <img src="/chapter9-context-root/resources/java_small.jpg"
+                         alt="The Duke"
+                         style="margin-right: 8px; vertical-align:bottom;"/>
+                    Java
+                  </pro:headerFacet>
+                  <table>
+                    <tbody>
+                      <tr>
+                        <td>
+                          <a href="http://apress.com/book/bookDisplay.html?bID=10044">
+                              Pro JSF: Building Rich Internet Components</a>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>Pro EJB 3</td>
+                      </tr>
+                      <tr>
+                        <td>Pro Apache Maven</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </pro:showItem>
+                <pro:showItem itemid="second" style="display:block;">
+                  <pro:headerFacet>Open Source</pro:headerFacet>
+                </pro:showItem>
+                <pro:showItem itemid="third" style="display:block;">
+                  <pro:headerFacet>.NET</pro:headerFacet>
+                </pro:showItem>
+              </pro:showOneDeck>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </form>
+  </body>
+</html>

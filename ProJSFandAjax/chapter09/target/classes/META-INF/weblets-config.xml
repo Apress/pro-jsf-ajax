@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<weblets-config xmlns="http://weblets.dev.java.net/config" >
+
+  <weblet>
+    <weblet-name>com.apress.projsf.ch9</weblet-name>
+    <weblet-class>net.java.dev.weblets.packaged.PackagedWeblet</weblet-class>
+    <init-param>
+      <param-name>package</param-name>
+      <param-value>com.apress.projsf.ch9.render.htc.ajax.resources</param-value>
+    </init-param>
+    <mime-mapping>
+      <extension>htc</extension>
+      <mime-type>text/x-component</mime-type>
+    </mime-mapping>
+  </weblet>
+
+  <weblet-mapping>
+    <weblet-name>com.apress.projsf.ch9</weblet-name>
+    <url-pattern>/projsf-ch9/*</url-pattern>
+  </weblet-mapping>
+
+</weblets-config>

@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE taglib 
+   PUBLIC "-//Sun Microsystems, Inc.//DTD JSP Tag Library 1.2//EN"
+          "http://java.sun.com/dtd/web-jsptaglibrary_1_2.dtd" >
+<taglib>
+
+  <tlib-version>1.0</tlib-version>
+  <jsp-version>1.2</jsp-version>
+  <short-name>pro</short-name>
+  <uri>http://projsf.apress.com/tags</uri>
+  <description>
+    This tag library contains JavaServer Faces tag handlers for the
+    ProJSF component library.
+  </description>
+
+  <tag>
+    <name>inputDate</name>
+    <tag-class>com.apress.projsf.ch2.taglib.pro.ProInputDateTag</tag-class>
+    <body-content>JSP</body-content>
+    <description>
+      ProJSF Input Date component tag.
+    </description>
+    
+    <!-- UIComponent attributes -->
+    <attribute>
+      <name>id</name>
+      <required>false</required>
+      <rtexprvalue>false</rtexprvalue>
+      <description>
+        The component identifier for this component.  This value must be
+        unique within the closest parent component that is a naming
+        container.
+      </description>
+    </attribute>
+    <attribute>
+      <name>rendered</name>
+      <required>false</required>
+      <rtexprvalue>false</rtexprvalue>
+      <description>
+        Flag indicating whether or not this component should be rendered
+        (during Render Response Phase), or processed on any subsequent
+        form submit.
+      </description>
+    </attribute>
+    <attribute>
+      <name>binding</name>
+      <required>false</required>
+      <rtexprvalue>false</rtexprvalue>
+      <description>
+         The value binding expression linking this component to a 
+         property in a backing bean.
+      </description>
+    </attribute>
+
+    <!-- UIInput attributes -->
+    <attribute>
+      <name>converter</name>
+      <required>false</required>
+      <rtexprvalue>false</rtexprvalue>
+      <description>
+        Converter instance registered with this component.
+      </description>
+    </attribute>
+    <attribute>
+      <name>immediate</name>
+      <required>false</required>
+      <rtexprvalue>false</rtexprvalue>
+      <description>
+        Flag indicating that this component's value must be
+        converted and validated immediately (that is, during
+        Apply Request Values phase), rather than waiting
+        until Process Validations phase.
+      </description>
+    </attribute>
+    <attribute>
+      <name>required</name>
+      <required>false</required>
+      <rtexprvalue>false</rtexprvalue>
+      <description>
+        Flag indicating that the user is required to provide a submitted
+        value for this input component.
+      </description>
+    </attribute>
+    <attribute>
+      <name>validator</name>
+      <required>false</required>
+      <rtexprvalue>false</rtexprvalue>
+      <description>
+        MethodBinding representing a validator method that will be called
+        during Process Validations to perform correctness checks on the
+        value of this component.  The expression must evaluate to a public
+        method that takes FacesContext, UIComponent, and Object parameters,
+        with a return type of void.
+      </description>
+    </attribute>
+    <attribute>
+      <name>value</name>
+      <required>false</required>
+      <rtexprvalue>false</rtexprvalue>
+      <description>
+        The current value of this component.
+      </description>
+    </attribute>
+    <attribute>
+      <name>valueChangeListener</name>
+      <required>false</required>
+      <rtexprvalue>false</rtexprvalue>
+      <description>
+        MethodBinding representing a value change listener method that will be
+        notified when a new value has been set for this input component.  The
+        expression must evaluate to a public method that takes a
+        ValueChangeEvent parameter, with a return type of void.
+      </description>
+    </attribute>
+
+    <!-- ProInputDate attributes -->
+    <attribute>
+      <name>onchange</name>
+      <required>false</required>
+      <rtexprvalue>false</rtexprvalue>
+      <description>
+        Javascript code executed when this element loses focus
+        and its value has been modified since gaining focus.
+      </description>
+    </attribute>
+    <attribute>
+      <name>title</name>
+      <required>false</required>
+      <rtexprvalue>false</rtexprvalue>
+      <description>
+        Advisory title information about markup elements generated
+        for this component.
+      </description>
+    </attribute>
+  </tag>
+
+  <tag>
+    <name>validateDate</name>
+    <tag-class>com.apress.projsf.ch7.taglib.ValidateDateTag</tag-class>
+    <body-content>JSP</body-content>
+    <description>
+    </description>
+
+    <attribute>
+      <name>availability</name>
+      <required>false</required>
+      <rtexprvalue>false</rtexprvalue>
+      <description>
+         The availability method binding with signature (Date, Date)
+         returns boolean[], indicating availablilty for each day in 
+         range (inclusive)
+      </description>
+    </attribute>
+  </tag>
+</taglib>

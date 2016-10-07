@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<?xml-stylesheet href="chrome://global/skin/" type="text/css" ?>
+<xul:window title="Pro JSF : Mozilla XUL" align="start" 
+      xmlns:xul="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul"
+      xmlns:html="http://www.w3.org/1999/xhtml" >
+  <xul:groupbox>
+    <xul:caption label="Search" />
+    <xul:hbox>
+      <html:input id="find-text" />
+      <xul:button label="Search" 
+                  oncommand="alert('Book choice: ' +  
+                             document.getElementById('find-text').value)" />
+    </xul:hbox>
+  </xul:groupbox>
+</xul:window>

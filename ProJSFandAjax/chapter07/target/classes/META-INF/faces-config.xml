@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" ?> 
+<!DOCTYPE faces-config 
+   PUBLIC "-//Sun Microsystems, Inc.//DTD JavaServer Faces Config 1.1//EN" 
+          "http://java.sun.com/dtd/web-facesconfig_1_1.dtd">
+          
+<faces-config xmlns="http://java.sun.com/JSF/Configuration" >
+  <render-kit>
+    <render-kit-id>com.apress.projsf.html.ajax[HTML_BASIC]</render-kit-id>
+    <render-kit-class>com.apress.projsf.ch6.render.html.ajax.HtmlAjaxRenderKit</render-kit-class>
+    <renderer>
+      <component-family>javax.faces.Input</component-family>
+      <renderer-type>com.apress.projsf.Date</renderer-type>
+      <renderer-class>com.apress.projsf.ch7.render.html.ajax.HtmlAjaxInputDateRenderer</renderer-class>
+    </renderer>
+  </render-kit>
+</faces-config>

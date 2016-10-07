@@ -1,0 +1,32 @@
+@namespace pro url(http://projsf.apress.com/tags);
+
+pro|inputDate
+{
+  -moz-binding: url('bindings.xml#inputDate'); 
+}
+
+pro|showOneDeck
+{
+  -moz-binding: url('bindings.xml#showOneDeck'); 
+  display: -moz-box;
+  -moz-box-orient: vertical;
+}
+
+pro|showItem
+{
+  -moz-binding: url('bindings.xml#showItem'); 
+  display: -moz-box;
+}
+
+pro|showItem[active='true']
+{
+  -moz-binding: url('bindings.xml#showItemActive'); 
+  display: -moz-box;
+}
+
+pro|showItemHeader
+{
+  -moz-binding: url('bindings.xml#showItemHeader'); 
+  display: -moz-box;
+}
+

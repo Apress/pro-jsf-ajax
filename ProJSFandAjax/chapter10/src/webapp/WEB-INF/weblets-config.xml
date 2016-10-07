@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<weblets-config xmlns="http://weblets.dev.java.net/config" >
+
+  <weblet-mapping>
+    <weblet-name>com.apress.projsf.ch5</weblet-name>
+    <url-pattern>/projsf-html-basic/*</url-pattern>
+  </weblet-mapping>
+
+  <weblet-mapping>
+    <weblet-name>com.apress.projsf.ch6</weblet-name>
+    <url-pattern>/projsf-html-ajax-data/*</url-pattern>
+  </weblet-mapping>
+
+  <weblet-mapping>
+    <weblet-name>com.apress.projsf.ch7</weblet-name>
+    <url-pattern>/projsf-html-ajax-event/*</url-pattern>
+  </weblet-mapping>
+
+  <weblet-mapping>
+    <weblet-name>com.apress.projsf.ch8</weblet-name>
+    <url-pattern>/projsf-xul-ajax/*</url-pattern>
+  </weblet-mapping>
+
+  <weblet-mapping>
+    <weblet-name>com.apress.projsf.ch9</weblet-name>
+    <url-pattern>/projsf-htc-ajax/*</url-pattern>
+  </weblet-mapping>
+
+</weblets-config>

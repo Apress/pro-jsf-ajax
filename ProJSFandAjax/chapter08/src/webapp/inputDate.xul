@@ -1,0 +1,21 @@
+<?xml version="1.0" ?>
+<?xml-stylesheet href="projsf-ch8/document.css" type="text/css"?>
+<?xml-stylesheet href="projsf-ch8/pro.css" type="text/css"?>
+<xul:window xmlns="http://www.w3.org/1999/xhtml"   
+           xmlns:xul="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul"
+           xmlns:pro="http://projsf.apress.com/tags" 
+           orient="horizontal" align="start" 
+           title="Pro JSF : ProInputDate">
+  <xul:hbox align="center" flex="1">
+    <xul:script type="text/javascript" src="/chapter8-context-root/faces/weblets/mabon/mabon.js"/>
+    <xul:script type="text/javascript">
+      var djConfig={preventBackButtonFix: true, 
+                    libraryScriptUri:'/chapter8-context-root/faces/weblets/dojo/dojo.js'};
+    </xul:script>
+    <xul:script type="text/javascript" src="/chapter8-context-root/faces/weblets/dojo$0.1/dojo.js"/>
+    <pro:inputDate id="form:theDate" 
+                   value="31 October 2005" 
+                   pattern="d MMMMM yyyy"
+                   targetURL="projsf-ch8/sample-availability.json"/>
+  </xul:hbox>
+</xul:window>

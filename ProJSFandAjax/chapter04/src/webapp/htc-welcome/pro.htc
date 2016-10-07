@@ -1,0 +1,25 @@
+<html>
+  <head>
+    <public:component tagName="welcome" >
+      <public:defaults viewlinkcontent="true" />
+
+      <public:property name="name" value="Guest" />
+
+      <public:attach event="oncontentready" handler="_constuctor" />
+    </public:component>
+
+    <script type="text/javascript" >
+      function _constuctor()
+      {
+        nameSpan.innerText = element.name;
+      }
+    </script>
+  </head>
+  <body>
+    Welcome, <span id="nameSpan" 
+                   onclick="if (element.name != 'Guest') 
+                            { 
+                              alert('Nice to see you again, ' + element.name); 
+                            }" ></span>!
+  </body>
+</html>

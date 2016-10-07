@@ -1,0 +1,87 @@
+<html>
+  <head>
+    <public:component tagName="showItem" >
+      <public:property name="itemId" />
+      <public:property name="styleClass" />
+      <public:property name="headerStyleClass" />
+      <public:property name="contentStyleClass" />
+      <public:property name="active" />
+      
+      <public:attach event="oncontentready" handler="_constructor" />
+    </public:component>
+    
+    <link rel="stylesheet" type="text/css" href="weblet:/showOneDeck.css" >
+
+    <script type="text/javascript" >
+      function _constructor()
+      {
+        header.className = (element.headerStyleClass || 'ProShowItemHeader');
+        header.onclick = _expand;
+    
+        for (var i=0; i < childNodes.length; i++)
+        {
+          var childNode = childNodes[i];
+          if (childNode.scopeName == 'pro' && 
+              childNode.nodeName == 'headerFacet')
+          {
+            // set header on showItem
+            header.innerHTML = childNode.innerHTML;
+          }
+          else
+          {
+            // set content inside showItem
+            switch (childNode.nodeType)
+            {
+              case 1: // Element
+                content.insertAdjacentHTML("beforeEnd", childNode.outerHTML);
+                break;
+              case 3: // Text
+                content.insertAdjacentHTML("beforeEnd", childNode.nodeValue);
+                break;
+            }
+          }
+        }
+
+        // show the contents if active
+        if (element.active == 'true')
+        {
+          content.className = (element.contentStyleClass || 'ProShowItemContent');
+          content.style.display = 'block';
+        }
+    
+        defaults.viewLink = document;
+      }
+      
+      function _expand()
+      {
+        var showOneNode = element.parentNode;
+        var showOneClientId = showOneNode.id;
+
+        var currentNode = element;
+        while (currentNode != null)
+        {
+          var method = currentNode.method;
+            
+          if (method != null &&
+              (method.toLowerCase() == 'get' ||
+               method.toLowerCase() == 'post'))
+          {
+            var formNode = currentNode;
+            var content = new Object();
+            content[showOneClientId] = element.itemId;
+            d2.submit(formNode, content);
+            break;
+          }
+          
+          currentNode = currentNode.parentNode;
+        }
+      }
+    </script>
+  </head>
+  
+  <body style="display:block" class="ProShowItem" >
+    <div id="header" ></div>
+    <div id="content" style="display:none;" ></div>
+  </body>
+
+</html>
